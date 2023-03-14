@@ -11,6 +11,7 @@
 		C214CB1529C0062400DADA4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB1429C0062400DADA4C /* ContentView.swift */; };
 		C214CB1729C0062600DADA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C214CB1629C0062600DADA4C /* Assets.xcassets */; };
 		C214CB1A29C0062600DADA4C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C214CB1929C0062600DADA4C /* Preview Assets.xcassets */; };
+		C214CB2229C02EA000DADA4C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB2129C02EA000DADA4C /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		C214CB1429C0062400DADA4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C214CB1629C0062600DADA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C214CB1929C0062600DADA4C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C214CB2129C02EA000DADA4C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		C214CB1129C0062400DADA4C /* SocialNetwork-PlenyTask */ = {
 			isa = PBXGroup;
 			children = (
+				C214CB2029C02E8B00DADA4C /* View */,
 				C214CB1229C0062400DADA4C /* SocialNetwork_PlenyTaskApp.swift */,
 				C214CB1429C0062400DADA4C /* ContentView.swift */,
 				C214CB1629C0062600DADA4C /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				C214CB1929C0062600DADA4C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C214CB2029C02E8B00DADA4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C214CB2129C02EA000DADA4C /* LoginView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C214CB2229C02EA000DADA4C /* LoginView.swift in Sources */,
 				C214CB1529C0062400DADA4C /* ContentView.swift in Sources */,
 				C214CB1329C0062400DADA4C /* SocialNetwork_PlenyTaskApp.swift in Sources */,
 			);
