@@ -18,71 +18,93 @@ struct FeedView: View {
     @StateObject var feedData = FeedViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: 20) {
-                HStack(alignment: .top, spacing: 10) {
-                    
-                    Button(action: {
-                        withAnimation(.easeInOut) {
-                            feedData.selectedCriteria = 0
-                            feedData.showImageViewer.toggle()
-                        }
-                    }, label: {
-                        Image(userPic)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 40, height: 40)
-                            .clipShape(Circle())
-                    })
-                    
-                    
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(username)
-                            .font(.system(size: 17))
-                            .fontWeight(.medium)
-                        Text(setupDate())
-                            .font(.system(size: 13))
-                            .foregroundColor(.gray)
-                    }
-                    Spacer()
-                    .overlay(alignment: .topTrailing, content: {
-                        Menu(content: {
-                            
+        
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .center, spacing: 20) {
+                    HStack(alignment: .top, spacing: 10) {
+                        
+                        Button(action: {
+                            withAnimation(.easeInOut) {
+                                feedData.selectedCriteria = 0
+                                feedData.showImageViewer.toggle()
+                            }
                         }, label: {
-                            Image(systemName: "ellipsis")
-                                .font(.system(size: 20))
-                                .foregroundColor(Color(.darkGray))
-                                .padding(8)
-                                .containerShape(Rectangle())
+                            Image(userPic)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 40, height: 40)
+                                .clipShape(Circle())
                         })
-                    })
+                        
+                        
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(username)
+                                .font(.system(size: 17))
+                                .fontWeight(.medium)
+                            Text(setupDate())
+                                .font(.system(size: 13))
+                                .foregroundColor(.gray)
+                        }
+                        Spacer()
+                            .overlay(alignment: .topTrailing, content: {
+                                Menu(content: {
+                                    
+                                }, label: {
+                                    Image(systemName: "ellipsis")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(Color(.darkGray))
+                                        .padding(8)
+                                        .containerShape(Rectangle())
+                                })
+                            })
+                    }
+                    
+                    VStack(alignment: .center) {
+                        Text(postText)
+                            .textSelection(.enabled)
+                        
+                        let columns = Array(repeating: GridItem(.flexible(), spacing: 5), count: 2)
+                        LazyVGrid(columns: columns, alignment: .leading, spacing: 7, content: {
+                            ForEach(feedData.feedImages.indices, id: \.self) { index in
+                                GridImageView(index: index)
+                            }
+                        })
+                    }
+                }
+            }
+            .padding(.all, 10)
+            .overlay(content: {
+                // imageViewer
+                ZStack {
+                    if feedData.showImageViewer {
+                        ImageView()
+                    }
+                }
+            })
+            .environmentObject(feedData)
+            
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    // MARK: LOGO IMAGE NEED RESIZE ADJUSTMENT
+                    Image("LOGO")
+                        .resizable()
+                        .frame(width: 60, height: 16)
                 }
                 
-                VStack(alignment: .center) {
-                    Text(postText)
-                        .textSelection(.enabled)
-//                        .padding(.vertical, 0)
-                    
-                    let columns = Array(repeating: GridItem(.flexible(), spacing: 5), count: 2)
-                    LazyVGrid(columns: columns, alignment: .leading, spacing: 7, content: {
-                        ForEach(feedData.feedImages.indices, id: \.self) { index in
-                            GridImageView(index: index)
-                        }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        
+                    }, label: {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.black)
                     })
                 }
             }
         }
-        .padding(.all, 10)
-        .overlay(content: {
-            // imageViewer
-            ZStack {
-                if feedData.showImageViewer {
-                     ImageView()
-                }
-            }
-        })
-        .environmentObject(feedData)
     }
+  
     
     private func setupDate() -> String {
         let formatter = RelativeDateTimeFormatter()
