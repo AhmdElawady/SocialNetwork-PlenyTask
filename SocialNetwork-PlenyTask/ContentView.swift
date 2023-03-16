@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("log_status") var logStatus: Bool = false
     var body: some View {
-        FeedView()
+        if logStatus {
+            FeedView()
+        } else {
+            LoginView()
+        }
     }
 }
 

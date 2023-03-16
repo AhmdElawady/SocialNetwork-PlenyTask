@@ -9,11 +9,14 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @StateObject private var loginViewModel = LoginViewModel()
+    
     // MARK: USER DETAILS
-    @State private var username = ""
-    @State private var password = ""
+//    @State private var username = ""
+//    @State private var password = ""
     
     @State private var visible = false
+    @State private var isLoading = false
     
     var body: some View {
         
@@ -32,7 +35,7 @@ struct LoginView: View {
                         .font(.system(size: 20, weight: .bold))
                         .fontWeight(.bold)
                         .foregroundColor(.blue)
-        //                .frame(maxWidth: .infinity, alignment: .center)
+//                        .frame(maxWidth: .infinity, alignment: .center)
                     
                     
                     // MARK: Username TextField
@@ -41,7 +44,7 @@ struct LoginView: View {
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.black)
                         
-                        TextField("Enter your username", text: $username)
+                        TextField("Enter your username", text: $loginViewModel.username)
                             .frame(height: 20)
                             .font(.system(size: 17))
                             .padding()
@@ -58,10 +61,10 @@ struct LoginView: View {
                         
                         HStack(spacing: 15) {
                             if self.visible {
-                                TextField("Enter your password", text: $password)
+                                TextField("Enter your password", text: $loginViewModel.password)
                                     .padding()
                             } else {
-                                SecureField("Enter your password", text: $password)
+                                SecureField("Enter your password", text: $loginViewModel.password)
                                     .padding()
                             }
                             
@@ -83,9 +86,7 @@ struct LoginView: View {
                 
                 
                 // MARK: Login button
-                Button(action:  {
-                    // ACTION
-                }) {
+                Button(action: signInUser) {
                     Text("Sign in")
                         .foregroundColor(.white)
                         .font(.system(size: 17, weight: .bold))
@@ -96,8 +97,15 @@ struct LoginView: View {
                 .cornerRadius(32)
                 .padding(.bottom, 53)
             }
-            
+            .overlay(content: {
+                LoadingView(show: $isLoading)
+            })
         }
+    }
+    
+    func signInUser() {
+        isLoading = true
+        loginViewModel.login()
     }
 }
 

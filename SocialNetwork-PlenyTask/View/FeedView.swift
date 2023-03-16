@@ -60,7 +60,7 @@ struct FeedView: View {
                             })
                     }
                     
-                    VStack(alignment: .center) {
+                    VStack(alignment: .leading) {
                         Text(postText)
                             .textSelection(.enabled)
                         
@@ -73,16 +73,6 @@ struct FeedView: View {
                     }
                 }
             }
-            .padding(.all, 10)
-            .overlay(content: {
-                // imageViewer
-                ZStack {
-                    if feedData.showImageViewer {
-                        ImageView()
-                    }
-                }
-            })
-            .environmentObject(feedData)
             
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -102,6 +92,17 @@ struct FeedView: View {
                     })
                 }
             }
+            
+            .padding(.all, 10)
+            .overlay(content: {
+                // imageViewer
+                ZStack {
+                    if feedData.showImageViewer {
+                        ImageView()
+                    }
+                }
+            })
+            .environmentObject(feedData)
         }
     }
   
