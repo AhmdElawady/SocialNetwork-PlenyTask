@@ -12,28 +12,18 @@ enum AuthenticationError: Error {
     case custom(errorMessage: String )
 }
 
-
 struct LoginRequestBody: Codable {
     var username: String
     var password: String
 }
 
-struct LoginRespondeBody: Codable {
-    let token: String?
-    let message: String?
-    let success: Bool?
-}
-
 class LoginService {
     
-
-    
-    func login(username: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    func login(username: String, password: String, completion: @escaping (Result<User, AuthenticationError>) -> Void) {
         guard let url = URL(string: "https://dummyjson.com/auth/login") else {
             completion(.failure(.custom(errorMessage: "URL not valid")))
             return
         }
-        
         
         let body = LoginRequestBody(username: username, password: password)
         
@@ -47,19 +37,15 @@ class LoginService {
                 completion(.failure(.invalideCredintial))
                 return
             }
-            
             do {
                 let decoder = JSONDecoder()
-                let responseObject = try decoder.decode(LoginRespondeBody.self, from: data)
-                
-                guard let token = responseObject.token else { return }
-                completion(.success(token))
+                let responseObject = try decoder.decode(User.self, from: data)
+                completion(.success(responseObject))
                 
             } catch {
                 completion(.failure(.invalideCredintial))
             }
             
         }.resume()
-            
     }
 }

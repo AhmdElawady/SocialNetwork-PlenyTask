@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageView: View {
     
-    @EnvironmentObject var feedData: FeedViewModel
+    @EnvironmentObject var postViewModel: PostsViewModel
     
     var body: some View {
         
@@ -17,15 +17,15 @@ struct ImageView: View {
             Color.black
                 .ignoresSafeArea()
             // View profile picture
-            if feedData.selectedCriteria == 0 {
-                Image(feedData.userProfilePic)
+            if postViewModel.selectedCriteria == 0 {
+                Image(postViewModel.postData[0].profilePic)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                 
             } else {
                 // View feed images
-                TabView(selection: $feedData.selectedImageID) {
-                    ForEach(feedData.feedImages, id: \.self) { image in
+                TabView(selection: $postViewModel.selectedImageID) {
+                    ForEach(postViewModel.postData[0].postImages, id: \.self) { image in
                         Image(image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -39,7 +39,7 @@ struct ImageView: View {
             // Close Button
             Button(action: {
                 withAnimation(.default) {
-                    feedData.showImageViewer.toggle()
+                    postViewModel.showImageViewer.toggle()
                 }
             }, label: {
                 Image(systemName: "xmark")

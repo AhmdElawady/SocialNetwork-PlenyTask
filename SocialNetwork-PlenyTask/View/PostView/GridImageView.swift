@@ -9,22 +9,23 @@ import SwiftUI
 
 struct GridImageView: View {
     
-    @EnvironmentObject var feedData: FeedViewModel
+    @EnvironmentObject var postsViewModel: PostsViewModel
     var index: Int
+    var staticPost: StaticPostData
     
     var body: some View {
         
         Button(action: {
             withAnimation(.easeInOut) {
-                feedData.selectedCriteria = 1
-                feedData.selectedImageID = feedData.feedImages[index]
-                feedData.showImageViewer.toggle()
+                postsViewModel.selectedCriteria = 1
+                postsViewModel.selectedImageID = postsViewModel.postData[0].postImages[index]
+                postsViewModel.showImageViewer.toggle()
             }
         }, label: {
             ZStack {
                 // limit images preview of Four
                 if index <= 3 {
-                    Image(feedData.feedImages[index])
+                    Image(staticPost.postImages[index])
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: getWidth(index: index), height: 170)
@@ -32,11 +33,11 @@ struct GridImageView: View {
                 }
                 
                 // Add a highlight view with counter if images more than Four
-                if feedData.feedImages.count > 4 && index == 3 {
+                if staticPost.postImages.count > 4 && index == 3 {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.black.opacity(0.5))
                     
-                    let restImages = feedData.feedImages.count-4
+                    let restImages = staticPost.postImages.count-4
                     Text("+\(restImages)")
                         .font(.title)
                         .fontWeight(.bold)
@@ -50,10 +51,10 @@ struct GridImageView: View {
     func getWidth(index: Int) -> CGFloat {
         let width = getRect().width - 20
 
-        if feedData.feedImages.count % 2 == 0 {
+        if staticPost.postImages.count % 2 == 0 {
             return width/2
         } else {
-            if index == feedData.feedImages.count - 1 {
+            if index == staticPost.postImages.count - 1 {
                 return width
             } else {
                 return width/2-5 // 5 point spacing between two iamges
@@ -64,16 +65,11 @@ struct GridImageView: View {
 
 struct GridImageView_Previews: PreviewProvider {
     static var previews: some View {
-//        GridImageView()
         ContentView()
     }
 }
 
-
-
-
 extension View {
-    
     func getRect() -> CGRect {
         return UIScreen.main.bounds
     }

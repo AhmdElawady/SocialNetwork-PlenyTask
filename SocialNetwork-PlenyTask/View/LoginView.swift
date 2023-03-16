@@ -10,13 +10,11 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject private var loginViewModel = LoginViewModel()
-    
-    // MARK: USER DETAILS
-//    @State private var username = ""
-//    @State private var password = ""
-    
     @State private var visible = false
     @State private var isLoading = false
+    
+    // MARK: Directly open FeedView if user Logedin once
+    @AppStorage("log_status") var logStatus: Bool = false
     
     var body: some View {
         
@@ -29,14 +27,11 @@ struct LoginView: View {
                         .aspectRatio(UIImage(named: "loginImage")!.size, contentMode: .fill)
                         .edgesIgnoringSafeArea(.top)
                         .frame(height: 440)
-                    
-                    
+
                     Text("Welcome")
                         .font(.system(size: 20, weight: .bold))
                         .fontWeight(.bold)
                         .foregroundColor(.blue)
-//                        .frame(maxWidth: .infinity, alignment: .center)
-                    
                     
                     // MARK: Username TextField
                     VStack(alignment: .leading, spacing: 6) {
@@ -84,7 +79,6 @@ struct LoginView: View {
                     .padding(.horizontal)
                 }
                 
-                
                 // MARK: Login button
                 Button(action: signInUser) {
                     Text("Sign in")
@@ -103,9 +97,19 @@ struct LoginView: View {
         }
     }
     
+    // MARK: Authentication method
     func signInUser() {
         isLoading = true
-        loginViewModel.login()
+        loginViewModel.login { result in
+            switch result {
+            case .success(let user):
+                logStatus = true
+                print(user)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            isLoading = false
+        }
     }
 }
 

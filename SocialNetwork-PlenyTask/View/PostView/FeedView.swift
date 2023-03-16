@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct FeedView: View {
+struct PostCardView: View {
     
     // MARK: POST DETAILS
-    @State private var userPic = "Ahmed saad"
+    @State private var userPic = "profile1"
     @State private var username = "Ahmed saad"
     @State private var publishedDate = Date(timeIntervalSinceReferenceDate: 2312)
     @State private var postText = "Craving delicious Food ? Try our new dish - a savory mix of roasted vegetables and quinoa, topped with a zesty garlic. Yum!"
     @State private var image: String = "Image1"
     @StateObject var feedData = FeedViewModel()
+    @State var posts: [Post] = []
+    @State private var isLoading = false
     
     var body: some View {
-        
         NavigationView {
             ScrollView {
                 VStack(alignment: .center, spacing: 20) {
@@ -103,6 +104,10 @@ struct FeedView: View {
                 }
             })
             .environmentObject(feedData)
+            
+            .overlay(content: {
+                LoadingView(show: $isLoading)
+            })
         }
     }
   
@@ -112,6 +117,17 @@ struct FeedView: View {
         formatter.unitsStyle = .full
         let stringDate = formatter.localizedString(for: publishedDate, relativeTo: Date())
         return stringDate
+    }
+    
+    func getPosts() { // get all posts
+        isLoading = true
+        feedData.getPosts { posts, error in
+            if error == nil {
+                self.posts = posts
+                print(posts)
+            }
+            isLoading = false
+        }
     }
 }
 
