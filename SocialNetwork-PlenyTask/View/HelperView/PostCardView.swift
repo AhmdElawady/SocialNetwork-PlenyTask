@@ -20,7 +20,7 @@ struct PostCardView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             HStack(alignment: .top, spacing: 10) {
-                Button(action: {
+                Button(action: { // selectable profile picture
                     withAnimation(.easeInOut) {
                         postsViewModel.selectedCriteria = 0
                         postsViewModel.showImageViewer.toggle()
@@ -32,7 +32,7 @@ struct PostCardView: View {
                         .frame(width: 40, height: 40)
                         .clipShape(Circle())
                 })
-                
+                // name and date ago
                 VStack(alignment: .leading, spacing: 2) {
                     Text(staticPost.username)
                         .font(.system(size: 17))
@@ -42,9 +42,10 @@ struct PostCardView: View {
                         .foregroundColor(.gray)
                 }
                 Spacer()
+                // post menu button "right side"
                     .overlay(alignment: .topTrailing, content: {
                         Menu(content: {
-                            
+                            // Menu action
                         }, label: {
                             Image(systemName: "ellipsis")
                                 .font(.system(size: 20))
@@ -54,7 +55,7 @@ struct PostCardView: View {
                         })
                     })
             }
-            
+            // post contents (body and images)
             VStack(alignment: .leading) {
                 Text(post.body)
                     .textSelection(.enabled)
@@ -70,6 +71,7 @@ struct PostCardView: View {
         .padding(.all, 10)
     }
     
+    // MARK: Setup date 'ago'
     private func setupDate() -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full

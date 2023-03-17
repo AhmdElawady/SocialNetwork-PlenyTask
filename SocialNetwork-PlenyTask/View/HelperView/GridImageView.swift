@@ -14,7 +14,6 @@ struct GridImageView: View {
     var staticPost: StaticPostData
     
     var body: some View {
-        
         Button(action: {
             withAnimation(.easeInOut) {
                 postsViewModel.selectedCriteria = 1

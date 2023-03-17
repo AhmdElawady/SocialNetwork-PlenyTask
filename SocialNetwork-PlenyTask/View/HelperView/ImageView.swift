@@ -13,7 +13,6 @@ struct ImageView: View {
 //    var staticPost: StaticPostData
     
     var body: some View {
-        
         ZStack {
             Color.black
                 .ignoresSafeArea()

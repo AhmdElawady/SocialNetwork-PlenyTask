@@ -30,6 +30,10 @@ class PostsViewModel: ObservableObject {
     func fetchPosts(completion: @escaping (PostResponseBody?, Error?) -> Void) {
         Services.shared.fetchPosts(completion: completion)
     }
+    
+    func fetchSearchedPosts(searchTerm: String, completion: @escaping (PostResponseBody?, Error?) -> Void) {
+        Services.shared.fetchSearchedPosts(searchTerm: searchTerm, completion: completion)
+    }
 }
 
 

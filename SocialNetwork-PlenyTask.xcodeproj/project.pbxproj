@@ -104,9 +104,10 @@
 		C214CB2029C02E8B00DADA4C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C214CB3A29C2EC0C00DADA4C /* PostView */,
+				C214CB4F29C4F05B00DADA4C /* HelperView */,
 				C214CB2129C02EA000DADA4C /* LoginView.swift */,
-				C214CB2C29C2931200DADA4C /* LoadingView.swift */,
+				C214CB3B29C2ECE300DADA4C /* PostsView.swift */,
+				C214CB4129C41ED200DADA4C /* SearchPostsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,17 +140,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C214CB3A29C2EC0C00DADA4C /* PostView */ = {
+		C214CB4F29C4F05B00DADA4C /* HelperView */ = {
 			isa = PBXGroup;
 			children = (
-				C214CB3B29C2ECE300DADA4C /* PostsView.swift */,
+				C214CB2A29C18DE400DADA4C /* ImageView.swift */,
 				C214CB3F29C4031B00DADA4C /* ReusablePostView.swift */,
 				C214CB2329C1101B00DADA4C /* PostCardView.swift */,
 				C214CB2829C1534500DADA4C /* GridImageView.swift */,
-				C214CB2A29C18DE400DADA4C /* ImageView.swift */,
-				C214CB4129C41ED200DADA4C /* SearchPostsView.swift */,
+				C214CB2C29C2931200DADA4C /* LoadingView.swift */,
 			);
-			path = PostView;
+			path = HelperView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
