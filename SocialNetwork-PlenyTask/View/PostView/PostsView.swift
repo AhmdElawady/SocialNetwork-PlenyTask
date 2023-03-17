@@ -10,11 +10,13 @@ import SwiftUI
 struct PostsView: View {
     
     @State private var posts: [Post] = []
+    @State private var staticData: StaticPostData?
     @StateObject var postsViewModel = PostsViewModel()
     
     var body: some View {
         NavigationStack {
             ReusablePostView(posts: $posts)
+            
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

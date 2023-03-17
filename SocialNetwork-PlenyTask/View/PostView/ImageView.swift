@@ -10,6 +10,7 @@ import SwiftUI
 struct ImageView: View {
     
     @EnvironmentObject var postViewModel: PostsViewModel
+//    var staticPost: StaticPostData
     
     var body: some View {
         
@@ -21,7 +22,6 @@ struct ImageView: View {
                 Image(postViewModel.postData[0].profilePic)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                
             } else {
                 // View feed images
                 TabView(selection: $postViewModel.selectedImageID) {
@@ -51,11 +51,5 @@ struct ImageView: View {
             .padding(10)
             ,alignment: .topTrailing
         )
-    }
-}
-
-struct ImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

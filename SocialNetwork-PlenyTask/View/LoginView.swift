@@ -100,14 +100,9 @@ struct LoginView: View {
     // MARK: Authentication method
     func signInUser() {
         isLoading = true
-        loginViewModel.login { result in
-            switch result {
-            case .success(let user):
-                logStatus = true
-                print(user)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+        loginViewModel.signIn { user, error in
+            if error != nil { print("Auth Error \(String(describing: error))") }
+            logStatus = true
             isLoading = false
         }
     }

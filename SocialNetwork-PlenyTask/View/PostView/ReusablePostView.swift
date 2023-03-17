@@ -2,7 +2,7 @@
 //  ReusablePostView.swift
 //  SocialNetwork-PlenyTask
 //
-//  Created by Awady on 3/16/23.
+//  Created by Awady on 3/17/23.
 //
 
 import SwiftUI
@@ -35,13 +35,13 @@ struct ReusablePostView: View {
             // Scroll to refresh
             isFetching = true
             posts = []
-            getPosts()
+            fetchPosts()
         }
         
         .task {
             // Fetch posts one time
             guard posts.isEmpty else { return }
-            getPosts()
+            fetchPosts()
         }
     }
     
@@ -53,11 +53,10 @@ struct ReusablePostView: View {
         }
     }
     
-    func getPosts() { // get all posts
-        postsViewModel.getPosts { posts, error in
-            if error == nil {
-                self.posts = posts
-            }
+    func fetchPosts() { // get all posts
+        postsViewModel.fetchPosts { posts, error in
+            if error != nil && posts == nil { print("Fetch posts error \(String(describing: error))") }
+            self.posts = posts?.posts ?? []
             isFetching = false
         }
     }

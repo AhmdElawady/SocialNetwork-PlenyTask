@@ -7,6 +7,7 @@
 
 import Foundation
 
+// PostData
 struct Post: Identifiable, Codable {
     var id: Int
     var title: String
@@ -14,4 +15,11 @@ struct Post: Identifiable, Codable {
     var userId: Int
     var tags: [String]
     var reactions: Int
+}
+
+// ResponseBody
+struct PostResponseBody: Codable {
+    var posts: [Post]
+    var total: Int
+    var limit: Int
 }

@@ -12,8 +12,8 @@ class LoginViewModel: ObservableObject {
     var username: String = ""
     var password: String = ""
     
-    func login(completion: @escaping (Result<User, AuthenticationError>) -> Void) {
-        LoginService().login(username: username, password: password, completion: completion)
+    func signIn(completion: @escaping (User?, Error?) -> Void) {
+        Services.shared.signIn(username: username, password: password, completion: completion)
     }
     
 }

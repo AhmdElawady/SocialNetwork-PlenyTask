@@ -18,7 +18,7 @@ struct GridImageView: View {
         Button(action: {
             withAnimation(.easeInOut) {
                 postsViewModel.selectedCriteria = 1
-                postsViewModel.selectedImageID = postsViewModel.postData[0].postImages[index]
+                postsViewModel.selectedImageID = staticPost.postImages[index]
                 postsViewModel.showImageViewer.toggle()
             }
         }, label: {
@@ -60,12 +60,6 @@ struct GridImageView: View {
                 return width/2-5 // 5 point spacing between two iamges
             }
         }
-    }
-}
-
-struct GridImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
 

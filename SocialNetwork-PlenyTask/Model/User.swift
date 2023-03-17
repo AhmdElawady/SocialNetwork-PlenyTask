@@ -7,6 +7,12 @@
 
 import Foundation
 
+
+struct LoginRequestBody: Codable {
+    var username: String
+    var password: String
+}
+
 struct User: Codable {
     var id: Int
     var username: String

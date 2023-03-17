@@ -17,13 +17,15 @@
 		C214CB2929C1534500DADA4C /* GridImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB2829C1534500DADA4C /* GridImageView.swift */; };
 		C214CB2B29C18DE400DADA4C /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB2A29C18DE400DADA4C /* ImageView.swift */; };
 		C214CB2D29C2931200DADA4C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB2C29C2931200DADA4C /* LoadingView.swift */; };
-		C214CB3029C299B400DADA4C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB2F29C299B400DADA4C /* LoginService.swift */; };
 		C214CB3229C2A18300DADA4C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB3129C2A18300DADA4C /* LoginViewModel.swift */; };
 		C214CB3529C2C68700DADA4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB3429C2C68700DADA4C /* User.swift */; };
 		C214CB3729C2D49D00DADA4C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB3629C2D49D00DADA4C /* Post.swift */; };
-		C214CB3929C2D57400DADA4C /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB3829C2D57400DADA4C /* PostService.swift */; };
 		C214CB3C29C2ECE300DADA4C /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB3B29C2ECE300DADA4C /* PostsView.swift */; };
-		C214CB3E29C2EE4A00DADA4C /* ReusablePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB3D29C2EE4A00DADA4C /* ReusablePostView.swift */; };
+		C214CB4029C4031B00DADA4C /* ReusablePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB3F29C4031B00DADA4C /* ReusablePostView.swift */; };
+		C214CB4229C41ED200DADA4C /* SearchPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB4129C41ED200DADA4C /* SearchPostsView.swift */; };
+		C214CB4629C42B0A00DADA4C /* GenaricOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB4529C42B0A00DADA4C /* GenaricOperation.swift */; };
+		C214CB4829C42C1200DADA4C /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB4729C42C1200DADA4C /* URLHelper.swift */; };
+		C214CB4A29C42F9100DADA4C /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214CB4929C42F9100DADA4C /* Interactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,13 +40,15 @@
 		C214CB2829C1534500DADA4C /* GridImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridImageView.swift; sourceTree = "<group>"; };
 		C214CB2A29C18DE400DADA4C /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		C214CB2C29C2931200DADA4C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		C214CB2F29C299B400DADA4C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		C214CB3129C2A18300DADA4C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C214CB3429C2C68700DADA4C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C214CB3629C2D49D00DADA4C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		C214CB3829C2D57400DADA4C /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		C214CB3B29C2ECE300DADA4C /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
-		C214CB3D29C2EE4A00DADA4C /* ReusablePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostView.swift; sourceTree = "<group>"; };
+		C214CB3F29C4031B00DADA4C /* ReusablePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostView.swift; sourceTree = "<group>"; };
+		C214CB4129C41ED200DADA4C /* SearchPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostsView.swift; sourceTree = "<group>"; };
+		C214CB4529C42B0A00DADA4C /* GenaricOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenaricOperation.swift; sourceTree = "<group>"; };
+		C214CB4729C42C1200DADA4C /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		C214CB4929C42F9100DADA4C /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +123,9 @@
 		C214CB2E29C2996C00DADA4C /* NetworkingService */ = {
 			isa = PBXGroup;
 			children = (
-				C214CB2F29C299B400DADA4C /* LoginService.swift */,
-				C214CB3829C2D57400DADA4C /* PostService.swift */,
+				C214CB4729C42C1200DADA4C /* URLHelper.swift */,
+				C214CB4529C42B0A00DADA4C /* GenaricOperation.swift */,
+				C214CB4929C42F9100DADA4C /* Interactor.swift */,
 			);
 			path = NetworkingService;
 			sourceTree = "<group>";
@@ -138,10 +143,11 @@
 			isa = PBXGroup;
 			children = (
 				C214CB3B29C2ECE300DADA4C /* PostsView.swift */,
-				C214CB3D29C2EE4A00DADA4C /* ReusablePostView.swift */,
+				C214CB3F29C4031B00DADA4C /* ReusablePostView.swift */,
 				C214CB2329C1101B00DADA4C /* PostCardView.swift */,
 				C214CB2829C1534500DADA4C /* GridImageView.swift */,
 				C214CB2A29C18DE400DADA4C /* ImageView.swift */,
+				C214CB4129C41ED200DADA4C /* SearchPostsView.swift */,
 			);
 			path = PostView;
 			sourceTree = "<group>";
@@ -216,16 +222,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C214CB3E29C2EE4A00DADA4C /* ReusablePostView.swift in Sources */,
+				C214CB4029C4031B00DADA4C /* ReusablePostView.swift in Sources */,
 				C214CB3C29C2ECE300DADA4C /* PostsView.swift in Sources */,
+				C214CB4A29C42F9100DADA4C /* Interactor.swift in Sources */,
 				C214CB2729C1505B00DADA4C /* PostsViewModel.swift in Sources */,
+				C214CB4829C42C1200DADA4C /* URLHelper.swift in Sources */,
 				C214CB2429C1101B00DADA4C /* PostCardView.swift in Sources */,
+				C214CB4629C42B0A00DADA4C /* GenaricOperation.swift in Sources */,
 				C214CB2229C02EA000DADA4C /* LoginView.swift in Sources */,
 				C214CB3729C2D49D00DADA4C /* Post.swift in Sources */,
-				C214CB3929C2D57400DADA4C /* PostService.swift in Sources */,
 				C214CB1529C0062400DADA4C /* ContentView.swift in Sources */,
-				C214CB3029C299B400DADA4C /* LoginService.swift in Sources */,
 				C214CB2929C1534500DADA4C /* GridImageView.swift in Sources */,
+				C214CB4229C41ED200DADA4C /* SearchPostsView.swift in Sources */,
 				C214CB2D29C2931200DADA4C /* LoadingView.swift in Sources */,
 				C214CB2B29C18DE400DADA4C /* ImageView.swift in Sources */,
 				C214CB3229C2A18300DADA4C /* LoginViewModel.swift in Sources */,

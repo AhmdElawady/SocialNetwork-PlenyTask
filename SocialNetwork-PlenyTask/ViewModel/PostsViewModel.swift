@@ -14,7 +14,6 @@ struct StaticPostData {
     var postImages: [String]
 }
 
-
 class PostsViewModel: ObservableObject {
     
     @Published var postData: [StaticPostData] = [
@@ -24,15 +23,12 @@ class PostsViewModel: ObservableObject {
     ].shuffled()
     
     
-//    @Published var userProfilePic: [String] = ["profile1", "profile2", "profile3"].shuffled()
-//    @Published var feedImages: [String] = ["Image1", "Image2", "Image3", "Image4", "Image5", "Image6", "Image7", "Image8"].shuffled()
-    
     @Published var showImageViewer = false
     @Published var selectedImageID: String = ""
     @Published var selectedCriteria: Int = 0
     
-    func getPosts(completion: @escaping ([Post], Error?) -> ()) {
-        PostService().getPosts(completion: completion)
+    func fetchPosts(completion: @escaping (PostResponseBody?, Error?) -> Void) {
+        Services.shared.fetchPosts(completion: completion)
     }
 }
 
