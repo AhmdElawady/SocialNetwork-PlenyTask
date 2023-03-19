@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 
 struct StaticPostData {
@@ -14,25 +15,64 @@ struct StaticPostData {
     var postImages: [String]
 }
 
+//var postData: [StaticPostData] = [[StaticPostData]](repeating:
+//[StaticPostData(username: "Neama Ahmed", profilePic: "profile2", postImages: ["Image2", "Image5", "Image7", "Image1", "Image4"]),
+//StaticPostData(username: "Ahmed Saad", profilePic: "profile1", postImages: ["Image1", "Image6", "Image4"]),
+//StaticPostData(username: "KFC", profilePic: "profile3", postImages: ["Image1"])],
+//count: 50).flatMap{$0}
+
 class PostsViewModel: ObservableObject {
+
+    var localData = StaticPostData(username: "Ahmed Saad", profilePic: "profile1", postImages: ["Image2", "Image5", "Image7", "Image1", "Image4"])
     
-    @Published var postData: [StaticPostData] = [
-    StaticPostData(username: "Neama Ahmed", profilePic: "profile2", postImages: ["Image2", "Image5", "Image7"]),
-    StaticPostData(username: "Ahmed Saad", profilePic: "profile1", postImages: ["Image4", "Image1", "Image6", "Image4", "Image3", "Image1"]),
-    StaticPostData(username: "KFC", profilePic: "profile3", postImages: ["Image3"])
-    ].shuffled()
-    
+    @Published var posts: [Post] = []
+    @Published var skipCount = 0
     
     @Published var showImageViewer = false
     @Published var selectedImageID: String = ""
     @Published var selectedCriteria: Int = 0
     
-    func fetchPosts(completion: @escaping (PostResponseBody?, Error?) -> Void) {
-        Services.shared.fetchPosts(completion: completion)
+    // search posts
+    var searchCancelable: AnyCancellable? = nil
+    @Published var searchQuery = ""
+    @Published var searchedPosts: [Post] = []
+    @Published var searchSkipCount = 0
+    @Published var isFetching: Bool = false
+    
+    init() {
+        searchCancelable = $searchQuery
+            .removeDuplicates()
+            .debounce(for: 0.6, scheduler: RunLoop.main)
+            .sink(receiveValue: { str in
+                if str == "" {
+                    
+                } else {
+                    self.fetchSearchedPosts()
+                }
+            })
     }
     
-    func fetchSearchedPosts(searchTerm: String, completion: @escaping (PostResponseBody?, Error?) -> Void) {
-        Services.shared.fetchSearchedPosts(searchTerm: searchTerm, completion: completion)
+    func fetchPosts() {
+        let limit = 10
+        Services.shared.fetchPosts(limit: limit, skip: self.skipCount) { posts, error in
+            if error != nil && posts == nil { print("Fetch posts error \(String(describing: error))") }
+            DispatchQueue.main.async {
+                self.posts.append(contentsOf: posts?.posts ?? [])
+                self.skipCount = posts?.skip ?? 0
+            }
+        }
+    }
+    
+    func fetchSearchedPosts() {
+        isFetching = true
+        Services.shared.fetchSearchedPosts(limit: 5, skip: searchSkipCount, searchTerm: searchQuery) { posts, error in
+            if error != nil && posts == nil { print("Fetch posts error \(String(describing: error))") }
+            DispatchQueue.main.async {
+                self.searchedPosts = posts?.posts ?? []
+                self.searchSkipCount = posts?.skip ?? 0
+                self.isFetching = false
+            }
+        }
     }
 }
 

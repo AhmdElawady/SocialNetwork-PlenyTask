@@ -24,14 +24,14 @@ class Services {
     }
     
     // Fetch Posts
-    func fetchPosts(completion: @escaping (PostResponseBody?, Error?) -> Void) {
-        let urlString = URLHelper.EndPoints.posts.stringValue
+    func fetchPosts(limit: Int, skip: Int, completion: @escaping (PostResponseBody?, Error?) -> Void) {
+        let urlString = "\(URLHelper.EndPoints.posts.stringValue)?limit=\(limit)&skip=\(skip)"
         genaricOperation.getRequest(urlString: urlString, completion: completion)
     }
     
     // Fetch Searched Posts
-    func fetchSearchedPosts(searchTerm: String, completion: @escaping (PostResponseBody?, Error?) -> Void) {
-        let urlString = "\(URLHelper.EndPoints.searchPosts.stringValue)\(searchTerm)"
+    func fetchSearchedPosts(limit: Int, skip: Int, searchTerm: String, completion: @escaping (PostResponseBody?, Error?) -> Void) {
+        let urlString = "\(URLHelper.EndPoints.searchPosts.stringValue)\(searchTerm)&limit=\(limit)&skip=\(skip)"
         let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         genaricOperation.getRequest(urlString: urlStringEncoded ?? "", completion: completion)
     }

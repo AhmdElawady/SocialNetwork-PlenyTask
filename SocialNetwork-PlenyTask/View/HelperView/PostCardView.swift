@@ -19,6 +19,7 @@ struct PostCardView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
+            // User info
             HStack(alignment: .top, spacing: 10) {
                 Button(action: { // selectable profile picture
                     withAnimation(.easeInOut) {

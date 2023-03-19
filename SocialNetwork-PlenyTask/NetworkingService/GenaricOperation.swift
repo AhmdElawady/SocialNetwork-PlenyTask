@@ -10,7 +10,7 @@ import Foundation
 
 class GenaricOperation {
     
-    // MARK: GET OPERATIONS
+    // MARK: 'GET' OPERATIONS
     func getRequest<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
         guard let url = URL(string: urlString) else { return }
         
@@ -32,7 +32,7 @@ class GenaricOperation {
     }
     
     
-    // MARK: POST OPERATIONS
+    // MARK: 'POST' OPERATIONS
     func postRequest<T: Decodable>(request: URLRequest, completion: @escaping (T?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {

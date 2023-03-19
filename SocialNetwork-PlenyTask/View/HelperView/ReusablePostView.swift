@@ -7,30 +7,28 @@
 
 import SwiftUI
 
-struct ReusablePostView: View {
-    var posts: [Post] = []
-    @StateObject var postsViewModel = PostsViewModel()
-    
-    var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                if posts.isEmpty {
-                    Text("No Posts Found")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .padding(.top, 30 )
-                } else {
-                    // display posts
-                    Posts()
-                }
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func Posts() -> some View {
-        ForEach(posts) { post in
-            PostCardView(post: post, staticPost: postsViewModel.postData.randomElement()!)
-        }
-    }
-}
+//struct ReusablePostView: View {
+//    @StateObject var postsViewModel = PostsViewModel()
+//    var posts: [Post]
+//    var body: some View {
+////        VStack {
+////            if postsViewModel.posts.isEmpty {
+////                Text("No Posts Found")
+////                    .font(.caption)
+////                    .foregroundColor(.gray)
+////                    .padding(.top, 30)
+////            } else {
+////                // display posts
+////                ForEach(posts) { post in
+//////                    PostCardView(post: post, staticPost: postsViewModel.randomStaticItem)
+////                }
+////                .padding(.vertical)
+////            }
+////
+////
+////        }
+//        
+//
+//        
+//    }
+//}

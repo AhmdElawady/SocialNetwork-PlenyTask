@@ -8,7 +8,7 @@
 import Foundation
 
 // PostData
-struct Post: Identifiable, Codable {
+struct Post: Identifiable, Codable, Hashable {
     var id: Int
     var title: String
     var body: String
@@ -22,4 +22,5 @@ struct PostResponseBody: Codable {
     var posts: [Post]
     var total: Int
     var limit: Int
+    var skip: Int
 }

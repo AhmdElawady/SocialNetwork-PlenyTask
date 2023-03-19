@@ -11,7 +11,8 @@ import Foundation
 class URLHelper {
     
     static let baseUrl = "https://dummyjson.com"
- 
+    
+    
     enum EndPoints {
           case login
           case posts
@@ -28,5 +29,4 @@ class URLHelper {
               }
           }
       }
-    
 }

@@ -18,13 +18,15 @@ struct ImageView: View {
                 .ignoresSafeArea()
             // View profile picture
             if postViewModel.selectedCriteria == 0 {
-                Image(postViewModel.postData[0].profilePic)
+                
+                Image(postViewModel.localData.profilePic)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                
             } else {
                 // View feed images
                 TabView(selection: $postViewModel.selectedImageID) {
-                    ForEach(postViewModel.postData[0].postImages, id: \.self) { image in
+                    ForEach(postViewModel.localData.postImages, id: \.self) { image in
                         Image(image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
